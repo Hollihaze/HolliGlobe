@@ -1,0 +1,62 @@
+.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive World Globe</title>
+  <style>
+    #globe {
+      width: 300px;
+      height: 300px;
+      background-image: url('world-map-image.jpg'); /* Replace with your world map image */
+      position: relative;
+      cursor: pointer;
+    }
+    .marker {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="globe">
+    <!-- You can add markers dynamically using JavaScript -->
+  </div>
+
+  <script>
+    // Sample marker data (latitude, longitude)
+    const markerData = [
+      { lat: 40.7128, lng: -74.0060, name: "New York" },
+      { lat: 51.5074, lng: -0.1278, name: "London" },
+      // Add more marker data as needed
+    ];
+
+    // Add markers to the globe
+    const globe = document.getElementById('globe');
+    markerData.forEach(({ lat, lng, name }) => {
+      const marker = document.createElement('div');
+      marker.className = 'marker';
+      marker.style.top = `${50 - (lat * 5)}px`; // Convert latitude to top position
+      marker.style.left = `${150 + (lng * 5)}px`; // Convert longitude to left position
+      marker.title = name;
+      marker.addEventListener('click', () => {
+        // Handle marker click, e.g., display flight booking options or initiate interaction
+        alert(`Clicked on ${name}`);
+      });
+      globe.appendChild(marker);
+    });
+  </script>
+</body>
+</html>
+```
+
+In this example, we have a simple web page with an interactive world globe represented by an image. The JavaScript code adds markers to the globe based on latitude and longitude coordinates. When a marker is clicked, an alert is shown, but you can replace this with more sophisticated functionality such as displaying flight booking options or initiating social interaction features.
+
+Please note that this is a simplified example and does not include actual flight booking or social interaction features, which would require server-side and possibly database functionality in addition to client-side code. Also, the globe's interactive features are not based on real geographical data and are purely for illustrative purposes.
